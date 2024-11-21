@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Color", "Color\Color.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Imperative", "1. Imperative\1. Imperative.csproj", "{F7AFE34F-E54B-4139-B00C-D518567EAC69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Declarative", "2. Declarative\2. Declarative.csproj", "{A52F80FA-C2A1-4813-B99E-251541D6F37F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7AFE34F-E54B-4139-B00C-D518567EAC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AFE34F-E54B-4139-B00C-D518567EAC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AFE34F-E54B-4139-B00C-D518567EAC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AFE34F-E54B-4139-B00C-D518567EAC69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52F80FA-C2A1-4813-B99E-251541D6F37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52F80FA-C2A1-4813-B99E-251541D6F37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52F80FA-C2A1-4813-B99E-251541D6F37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52F80FA-C2A1-4813-B99E-251541D6F37F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
