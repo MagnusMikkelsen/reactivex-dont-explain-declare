@@ -1,0 +1,13 @@
+<Query Kind="Statements">
+  <NuGetReference>morelinq</NuGetReference>
+  <Namespace>MoreLinq</Namespace>
+</Query>
+
+int[] source = [1,2,3,4,5,6,7,8,9];
+
+source
+ .Where(x => x % 2 == 0)
+ .Dump("Filtered: ")
+ 
+ .Sum()
+ .Dump("The sum:");
