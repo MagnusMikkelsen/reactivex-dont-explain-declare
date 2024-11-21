@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33808.371
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlinkingLed", "BlinkingLed\BlinkingLed.csproj", "{C42758F6-696D-4E22-B8EC-E4E8C0296D36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Color", "Color\Color.csproj", "{6835772F-A2C9-4D79-8AB5-F72FA0E95979}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C42758F6-696D-4E22-B8EC-E4E8C0296D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42758F6-696D-4E22-B8EC-E4E8C0296D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42758F6-696D-4E22-B8EC-E4E8C0296D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42758F6-696D-4E22-B8EC-E4E8C0296D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6835772F-A2C9-4D79-8AB5-F72FA0E95979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6835772F-A2C9-4D79-8AB5-F72FA0E95979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6835772F-A2C9-4D79-8AB5-F72FA0E95979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6835772F-A2C9-4D79-8AB5-F72FA0E95979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B008CA-851F-4BD8-B6A3-26FC2FADBBD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A47D912F-3909-4360-97BF-79877690C771}
+	EndGlobalSection
+EndGlobal
