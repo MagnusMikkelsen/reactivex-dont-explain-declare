@@ -1,4 +1,7 @@
+foreach contract.linq
 Imperative collections.linq
 Declarative collections.linq
 IEnumerable interfaces.linq
 Observable interfaces.linq
+Timer.linq
+FromAsync.linq

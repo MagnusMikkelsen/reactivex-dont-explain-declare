@@ -11,9 +11,8 @@ void Main()
 	new MyObservable()
 		//.Subscribe(new MyObserver())
 		.Dump()
-		;	
+		;
 }
-
 
 public class MyObservable : IObservable<int>
 {
