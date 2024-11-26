@@ -22,7 +22,7 @@ using Accessibility;
 using RestSharp;
 using WpfApp1.Annotations;
 
-namespace WpfApp1;
+namespace NugetSearch;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
