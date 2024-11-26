@@ -106,7 +106,9 @@ public partial class Form1 : Form
 
     private IObservable<Unit> GetClicks(Button button) =>
         Observable
-            .FromEventPattern<object, EventArgs>(button, nameof(button.Click))
+            .FromEventPattern<EventHandler, EventArgs>(
+                h => button.Click += h,
+                h => button.Click -= h)
             .Select(_ => Unit.Default);
 
     #endregion
