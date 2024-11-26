@@ -87,7 +87,8 @@ public class ViewModel : INotifyPropertyChanged
         Observable
             .Merge(
                 whenTyping.Select(_ => Visibility.Visible),
-                input.Select(_ => Visibility.Hidden),
+                input.Where(x => x.longEnough).Select(_ => Visibility.Hidden),
+                input.Where(x => !x.longEnough).Select(_ => Visibility.Visible),
                 validInput.Select(_ => Visibility.Visible),
                 results.Select(_ => Visibility.Hidden))
             .Throttle(TimeSpan.FromMilliseconds(10))
