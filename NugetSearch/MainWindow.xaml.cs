@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
@@ -19,7 +20,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Accessibility;
-using RestSharp;
 using WpfApp1.Annotations;
 
 namespace NugetSearch;
@@ -57,8 +57,6 @@ public partial class MainWindow : Window
 
 public class ViewModel : INotifyPropertyChanged
 {
-    RestClient _client = new("https://api-v2v3search-0.nuget.org");
-
     public ViewModel()
     {
         // User types en search field
@@ -118,17 +116,20 @@ public class ViewModel : INotifyPropertyChanged
             .Select(_ => SearchTerm);
     }
 
+    private readonly HttpClient _client = new()
+    {
+        BaseAddress = new ("https://api-v2v3search-0.nuget.org")
+    };
+
     private IObservable<string[]> GetAutocomplete(string searchTerm)
     {
         return Observable.FromAsync(async ct =>
         {
             Debug.WriteLine(searchTerm);
-            var req =
-                new RestRequest("autocomplete")
-                    .AddQueryParameter("q", SearchTerm);
+
             try
             {
-                var result = await _client.GetAsync<AutoComplete>(req, ct);
+                var result = await _client.GetFromJsonAsync<AutoComplete>($"autocomplete?q={searchTerm}", ct);
                 var resultData = result?.Data ?? Array.Empty<string>();
                 Debug.WriteLine($"received {resultData.Length} autocomplete suggestions");
                 return resultData;

@@ -8,7 +8,6 @@
     <NoWarn>NU1803</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="System.Reactive" Version="6.0.0" />
   </ItemGroup>
 </Project>
