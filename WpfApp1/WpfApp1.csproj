@@ -1,17 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	  <AnalysisLevel>preview-all</AnalysisLevel>
-      <NoWarn>NU1803</NoWarn>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <AnalysisLevel>preview-all</AnalysisLevel>
+    <NoWarn>NU1803</NoWarn>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="System.Reactive" Version="6.0.0" />
   </ItemGroup>
-
 </Project>
