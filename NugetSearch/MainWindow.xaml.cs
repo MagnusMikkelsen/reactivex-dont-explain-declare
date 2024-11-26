@@ -66,6 +66,12 @@ public class ViewModel : INotifyPropertyChanged
             .Switch() // cancel search if user starts typing again
             .Publish().RefCount(); // share results observable. If we don't do we would do the web request once for each subscriber
 
+        var inputOnEmptyResult = results
+            .Where(r => r.Length == 0)
+            .WithLatestFrom(input)
+            .Select(x => x.Second)
+            .DistinctUntilChanged();
+
         results
             .Subscribe(r => SearchResult = r);
 
@@ -79,7 +85,8 @@ public class ViewModel : INotifyPropertyChanged
             .Merge(
                 whenTyping.Select(_ => "Typing..."),
                 validInput.Select(_ => "Calling..."),
-                input.Where(s => !s.longEnough).Select(_ => "Type at least 3 letters"))
+                input.Where(s => !s.longEnough).Select(_ => "Type at least 3 letters"),
+                inputOnEmptyResult.Select(i => $"No match for {i.term}"))
             .DistinctUntilChanged()
             .Subscribe(t => CallingOrTypingText = t);
 
@@ -90,7 +97,8 @@ public class ViewModel : INotifyPropertyChanged
                 input.Where(x => x.longEnough).Select(_ => Visibility.Hidden),
                 input.Where(x => !x.longEnough).Select(_ => Visibility.Visible),
                 validInput.Select(_ => Visibility.Visible),
-                results.Select(_ => Visibility.Hidden))
+                results.Select(_ => Visibility.Hidden),
+                inputOnEmptyResult.Select(_ => Visibility.Visible))
             .Throttle(TimeSpan.FromMilliseconds(10))
             .DistinctUntilChanged()
             .Subscribe(v => IsCalling = v);
