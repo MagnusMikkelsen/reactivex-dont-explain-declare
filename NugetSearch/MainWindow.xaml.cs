@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net.Http;
@@ -7,19 +6,9 @@ using System.Net.Http.Json;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Accessibility;
 using WpfApp1.Annotations;
 
 namespace NugetSearch;
@@ -225,12 +214,7 @@ public static class Exensions
 
         return source
             .Select(x => x.Key)
-            .Window(10,1)
-            .Do(async x =>
-            {
-                var y = await x.FirstAsync();
-                var l = $"{y}";
-            })
+            .Window(10, 1)
             .SelectMany(x => x.SequenceEqual(konamiCode))
             .Where(isKonami => isKonami)
             .Select(_ => Unit.Default);
