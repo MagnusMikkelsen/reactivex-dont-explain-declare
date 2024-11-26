@@ -72,7 +72,7 @@ public class ViewModel : INotifyPropertyChanged
         // Clear results if next search term to short
         input
             .Where(s => !s.longEnough)
-            .Subscribe(_ => SearchResult = Array.Empty<string>());
+            .Subscribe(_ => SearchResult = []);
 
         // Overlay text
         Observable
@@ -120,14 +120,14 @@ public class ViewModel : INotifyPropertyChanged
             try
             {
                 var result = await _client.GetFromJsonAsync<AutoComplete>($"autocomplete?q={searchTerm}", ct);
-                var resultData = result?.Data ?? Array.Empty<string>();
+                var resultData = result?.Data ?? [];
                 Debug.WriteLine($"received {resultData.Length} autocomplete suggestions");
                 return resultData;
             }
             catch (Exception e)
             {
                 Debug.WriteLine($"Autocomplete exception {e.Message}");
-                return Array.Empty<string>();
+                return [];
             }
         });
     }
@@ -172,7 +172,7 @@ public class ViewModel : INotifyPropertyChanged
         }
     }
 
-    private string[] _searchResult = Array.Empty<string>();
+    private string[] _searchResult = [];
 
     public string[] SearchResult
     {
