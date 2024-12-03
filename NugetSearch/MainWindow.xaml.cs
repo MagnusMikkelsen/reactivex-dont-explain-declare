@@ -92,6 +92,7 @@ public class ViewModel : INotifyPropertyChanged
             .Where(r => r.Length > 0);
 
         var state = Observable.Merge(
+            Observable.Return(State.Idle),
             whenTyping.Select(_ => State.Typing),
             toShort.Select(_ => State.ToShort),
             notChanged.Select(_ => State.Idle),
@@ -261,8 +262,8 @@ public static class Exensions
 
         return source
             .Select(x => x.Key)
-            .Window(10, 1)
-            .SelectMany(x => x.SequenceEqual(konamiCode))
+            .Buffer(10, 1)
+            .Select(x => x.SequenceEqual(konamiCode))
             .Where(isKonami => isKonami)
             .Select(_ => Unit.Default);
     }
