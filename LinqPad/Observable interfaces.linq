@@ -1,14 +1,22 @@
 <Query Kind="Program">
-  <NuGetReference>morelinq</NuGetReference>
   <NuGetReference>System.Reactive</NuGetReference>
   <Namespace>LINQPad.Controls</Namespace>
-  <Namespace>MoreLinq</Namespace>
   <Namespace>System.Reactive.Disposables</Namespace>
+  <Namespace>System.Threading.Tasks</Namespace>
 </Query>
 
-void Main()
+async Task Main()
 {
-	new MyObservable()
+	#region buttons
+	var onNextButton = new Button("Next");
+	var onCompleteButton = new Button("Complete");
+	var onErrorButton = new Button("OnError");
+	Util.HorizontalRun(true, onNextButton, onCompleteButton, onErrorButton).Dump();
+	#endregion
+	
+	// foo.Event += (s,e) => {}	
+	
+	var obs = new MyObservable(onNextButton, onCompleteButton, onErrorButton)
 		//.Subscribe(new MyObserver())
 		.Dump()
 		;
@@ -16,22 +24,50 @@ void Main()
 
 public class MyObservable : IObservable<int>
 {
+	#region fields and ctor
+	private Button _onNextButton;
+	private Button _onCompleteButton;
+	private Button _onErrorButton;
+
+	public MyObservable(Button onNextButton, Button onCompleteButton, Button onErrorButton)
+	{
+		_onNextButton = onNextButton;
+		_onCompleteButton = onCompleteButton;
+		_onErrorButton = onErrorButton;
+	}
+	#endregion
+
 	public IDisposable Subscribe(IObserver<int> observer)
 	{	
 		var i = 0;
-		var next = new Button(
-			"On Next",
-			_ => observer.OnNext(i++)).Dump();
-			
-		var complete = new Button(
-			"Complete", 
-			_ => observer.OnCompleted()).Dump();
-			
-		var error = new Button(
-			"Error", 
-			_ => observer.OnError(new Exception("error"))).Dump();
-			
-		return Disposable.Empty;
+		
+		// Needs more logic to dissallow several oncompleted or onerror
+		// and following onnext calls.
+		
+		#region subscribe
+		EventHandler onNext = 
+			(_, _) =>  observer.OnNext(i++);
+		_onNextButton.Click += onNext;
+		
+		EventHandler onCompleted = 
+			(_, _) =>  observer.OnCompleted();
+		_onCompleteButton.Click += onCompleted;
+		
+		EventHandler onError = 
+			(_, _) => observer.OnError(new Exception("error"));
+		_onErrorButton.Click += onError;
+		#endregion
+		
+		#region unsubscribe
+		var unsubscribe = Disposable.Create(() =>
+		{
+			_onNextButton.Click -= onNext;
+			_onCompleteButton.Click -= onCompleted;
+			_onErrorButton.Click -= onError;
+		});
+		#endregion
+		
+		return unsubscribe;
 	}
 }
 

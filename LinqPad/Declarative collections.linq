@@ -12,28 +12,25 @@
       <MapSQLiteBooleans>true</MapSQLiteBooleans>
     </DriverData>
   </Connection>
-  <NuGetReference>morelinq</NuGetReference>
-  <Namespace>MoreLinq</Namespace>
+  <NuGetReference>Microsoft.Extensions.Caching.Memory</NuGetReference>
+  <RuntimeVersion>9.0</RuntimeVersion>
 </Query>
 
 int[] source = [1,2,3,4,5,6,7,8,9];
 
 #region method syntax
 source
- .Where(x => x % 2 == 0)
- .Dump("Filtered: ")
- 
- .Sum()
- .Dump("The sum:");
+ .Where(x => x % 2 == 0)            .Dump("Filtered: ") 
+ .Sum()                             .Dump("The sum:");
 #endregion
 
  
  
 #region query expression
-//var spenders =  from invoice in Invoices
-//				where invoice.Total > 10
-//				select invoice.Customer;
-//				
-//spenders.Dump();
+var spenders =  from invoice in Invoices
+				where invoice.Total > 10
+				select invoice.Customer;
+				
+spenders.Dump();
 #endregion
 				

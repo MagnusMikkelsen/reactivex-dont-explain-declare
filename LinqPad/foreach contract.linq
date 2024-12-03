@@ -1,7 +1,5 @@
 <Query Kind="Program">
   <Output>DataGrids</Output>
-  <NuGetReference>morelinq</NuGetReference>
-  <Namespace>MoreLinq</Namespace>
 </Query>
 
 void Main()

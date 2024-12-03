@@ -1,7 +1,18 @@
-foreach contract.linq
 Imperative collections.linq
-Declarative collections.linq
+foreach contract.linq
 IEnumerable interfaces.linq
+Declarative collections.linq
 Observable interfaces.linq
+Range.linq
+Take - Where - Sum.linq
+Return.linq
+FromEventPattern.linq
 Timer.linq
 FromAsync.linq
+await.linq
+SelectMany - Merge.linq
+Publish RefCount.linq
+Throttle.linq
+Switch vs Merge.linq
+Window.linq
+Links.linq

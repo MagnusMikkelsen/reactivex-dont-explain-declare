@@ -1,7 +1,4 @@
-<Query Kind="Program">
-  <NuGetReference>morelinq</NuGetReference>
-  <Namespace>MoreLinq</Namespace>
-</Query>
+<Query Kind="Program" />
 
 void Main()
 {
