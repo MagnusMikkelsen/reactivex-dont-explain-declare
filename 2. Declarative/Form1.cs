@@ -33,7 +33,8 @@ public partial class Form1 : Form
 
         // Run control on control button click
         var control = controlClicks
-            .SelectMany(_ => Observable.FromAsync(Control))
+            .Select(_ => Observable.FromAsync(Control))
+            .Merge()
             .Select(_ => State.ControlDone)
             .Publish().RefCount();
 
@@ -73,7 +74,7 @@ public partial class Form1 : Form
             State.ControlDone => Color.GreenYellow,
             _ => Color.Yellow
         })
-        .Subscribe(c => labelStatus.BackColor = c);
+            .Subscribe(c => labelStatus.BackColor = c);
 
         // update Test Button Enabled
         state.Select(s => s switch
@@ -81,7 +82,7 @@ public partial class Form1 : Form
             State.Ready => true,
             _ => false
         })
-        .Subscribe(e => buttonTest.Enabled = e);
+            .Subscribe(e => buttonTest.Enabled = e);
 
         // update Control Button Enabled
         state.Select(s => s switch
